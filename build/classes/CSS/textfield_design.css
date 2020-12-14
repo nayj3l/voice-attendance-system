@@ -1,0 +1,27 @@
+.text-field {
+    -fx-background-color: transparent; 
+    -fx-border-color: grey; 
+    -fx-border-width: 0 0 0.1 0; 
+    -fx-border-radius: 3;
+}
+
+.text-input {
+    -fx-text-fill: white;
+   
+}
+.text-input:focused {
+    -fx-text-fill: #d03a3a;
+   -fx-highlight-text-fill: #d03a3a;
+}
+
+.text-input:hover {
+    -fx-text-fill: #d03a3a;
+    -fx-font-size: 15; 
+    -fx-prompt-text-fill:  #d03a3a;
+    -fx-highlight-text-fill: #d03a3a;
+}
+
+
+.button {
+    -fx-background-color: transparent; 
+}

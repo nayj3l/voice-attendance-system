@@ -1,0 +1,44 @@
+.table-row-cell:hover .text , .table-row-cell:selected .text{
+     -fx-fill: white ;    
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #1A1A1D;
+}
+
+.table-row-cell:selected{
+    -fx-background-color:firebrick;
+}/*
+*/
+/*#txtfld_studentNumber {
+    -fx-background-color: transparent; 
+    -fx-border-color: #d03a3a; 
+    -fx-prompt-text-fill: #d03a3a; red
+    -fx-border-width: 0 0 1 0; top, right, bottom, left
+}
+
+#txtfld_studentNumber.text-input:hover {
+    -fx-font-size: 15; 
+}*/
+
+#mainLog_studnum, #box_search {
+    -fx-background-color: transparent; 
+    -fx-border-color: #d03a3a; 
+    -fx-prompt-text-fill: #d03a3a;
+    -fx-border-width: 0 0 1 0; 
+}
+
+#mainLog_studnum.text-input:hover{
+    -fx-font-size: 15; 
+}
+
+#box_search.text-input:hover  {
+    -fx-font-size: 14; 
+}
+
+#staffer_studnum:hover, #staffer_fname:hover,
+#staffer_pos:hover, #staffer_middleinit:hover, #staffer_prog:hover, 
+#staffer_lname:hover, #staffer_address:hover, #staffer_contact:hover, #search_staffer:hover {
+    -fx-font-size: 13; 
+}
+

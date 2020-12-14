@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="pane_main" prefHeight="555.0" prefWidth="825.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dutycheckerfxml.MainSceneFXMLController">
+    <children>
+      <HBox fx:id="titlebarpane" alignment="CENTER_RIGHT" layoutY="-6.0" onMouseDragged="#draggedTitleBar" onMousePressed="#pressedTitleBar" prefHeight="46.0" prefWidth="1035.0" style="-fx-background-color: #F9D423; -fx-border-width: 0 0 1 0; -fx-border-color: #1A1A1D;">
+         <children>
+            <ImageView cache="true" fitHeight="25.0" fitWidth="50.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/logo-voice.png" />
+               </image>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </ImageView>
+            <Label cache="true" contentDisplay="RIGHT" prefHeight="15.0" prefWidth="225.0" text="T.I.P Voice Attendance System" textAlignment="CENTER">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+               </opaqueInsets>
+               <HBox.margin>
+                  <Insets left="5.0" right="665.0" />
+               </HBox.margin>
+            </Label>
+            <Pane fx:id="pane_minimize" onMouseClicked="#pane_minimizeActionPerformed" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: transparent;">
+               <children>
+                  <FontAwesomeIconView fx:id="minimize" fill="#1a1a1d" glyphName="MINUS" layoutX="15.0" layoutY="23.0" />
+               </children>
+            </Pane>
+            <Pane fx:id="pane_close" onMouseClicked="#pane_closeActionPerformed" prefHeight="40.0" prefWidth="40.0">
+               <children>
+                  <FontAwesomeIconView fx:id="close" fill="#fe4365" glyphName="CLOSE" layoutX="14.0" layoutY="24.0" size="15" />
+               </children>
+            </Pane>
+         </children>
+         <opaqueInsets>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </opaqueInsets>
+         <padding>
+            <Insets top="5.0" />
+         </padding>
+      </HBox>
+      <AnchorPane fx:id="pane_addStaff" layoutY="40.0" prefHeight="515.0" prefWidth="215.0" style="-fx-background-color: #1A1A1D;">
+         <children>
+            <TextField fx:id="reg_number" layoutX="33.0" layoutY="27.0" minHeight="25.0" prefWidth="150.0" promptText="Student Number" />
+            <TextField fx:id="reg_fname" layoutX="33.0" layoutY="67.0" minHeight="25.0" prefWidth="150.0" promptText="First Name" />
+            <TextField fx:id="reg_mname" layoutX="33.0" layoutY="107.0" minHeight="25.0" prefWidth="150.0" promptText="Middle Name" />
+            <TextField fx:id="reg_lname" layoutX="33.0" layoutY="147.0" minHeight="25.0" prefWidth="150.0" promptText="Last Name" />
+            <TextField fx:id="reg_pos" layoutX="33.0" layoutY="187.0" minHeight="25.0" prefWidth="150.0" promptText="Position" />
+            <TextField fx:id="reg_prog" layoutX="33.0" layoutY="227.0" minHeight="25.0" prefWidth="150.0" promptText="Program" />
+            <TextField fx:id="reg_contact" layoutX="33.0" layoutY="267.0" minHeight="25.0" prefWidth="150.0" promptText="Contact Number" />
+            <TextArea fx:id="reg_address" layoutX="33.0" layoutY="307.0" prefHeight="130.0" prefWidth="150.0" promptText="Address" wrapText="true">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </TextArea>
+            <ImageView fx:id="ico_reg" fitHeight="25.0" fitWidth="47.0" layoutX="159.0" layoutY="470.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/ico_login_grey.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btn_reguser" alignment="TOP_LEFT" contentDisplay="CENTER" layoutX="103.0" layoutY="470.0" mnemonicParsing="false" onAction="#btn_regUserActionPerformed" prefHeight="25.0" prefWidth="80.0" style="-fx-background-color: transparent;" text="Register" textFill="GREY" underline="true" />
+         </children></AnchorPane>
+      <AnchorPane fx:id="pane_masterlist" layoutX="215.0" layoutY="40.0" prefHeight="515.0" prefWidth="820.0" style="-fx-background-color: F9D423;">
+         <children>
+            <ComboBox fx:id="combobox_date" layoutX="10.0" layoutY="10.0" onAction="#combobox_dateActionPerfomed" prefHeight="25.0" prefWidth="110.0" promptText="Monday" />
+            <TableView fx:id="masterlisttbl" layoutX="10.0" layoutY="45.0" onMouseClicked="#masterlisttblSetActionClicked" prefHeight="455.0" prefWidth="630.0">
+              <columns>
+                <TableColumn fx:id="col_mlistdutytime" editable="false" prefWidth="85.0" resizable="false" sortable="false" style="-fx-alignment: CENTER;" text="Duty Time" />
+                <TableColumn fx:id="col_mliststaffer" editable="false" prefWidth="600.0" sortable="false" text="Staffer" />
+              </columns>
+            </TableView>
+            <Button fx:id="btn_saveTextArea" layoutX="735.0" layoutY="45.0" mnemonicParsing="false" onAction="#btn_saveTextAreaActionPerformed" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: #27d227;" text="Save" textFill="WHITE" />
+            <TextField fx:id="search_masterList" layoutX="135.0" layoutY="10.0" prefHeight="25.0" prefWidth="150.0" promptText="Search">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </TextField>
+            <FontAwesomeIconView glyphName="SEARCH" layoutX="141.0" layoutY="26.0" />
+            <ListView fx:id="listview" editable="true" layoutX="650.0" layoutY="120.0" prefHeight="380.0" prefWidth="160.0" />
+            <Button fx:id="btn_removeStaffer" layoutX="650.0" layoutY="45.0" mnemonicParsing="false" onMouseClicked="#btn_removeStafferSetActionMouseClicked" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: red;" text="Remove" textFill="WHITE" />
+            <TextField fx:id="fld_addStaff" layoutX="650.0" layoutY="85.0" onAction="#fld_addStaffActionPerformed" prefHeight="25.0" prefWidth="160.0" promptText="Add Staffer" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="pane_staffer" layoutX="215.0" layoutY="40.0" prefHeight="515.0" prefWidth="820.0" style="-fx-background-color: F9D423;">
+         <children>
+            <TextField fx:id="search_staffer" layoutX="119.0" layoutY="10.0" prefHeight="25.0" prefWidth="180.0" promptText="Search" style="-fx-background-color: transparent; -fx-prompt-text-fill: #d03a3a; -fx-border-width: 0 0 1 0; -fx-border-color: #1A1A1D;">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="25.0" />
+               </padding>
+            </TextField>
+            <FontAwesomeIconView glyphName="SEARCH" layoutX="119.0" layoutY="26.0" />
+            <TableView fx:id="table_staffer" layoutX="10.0" layoutY="45.0" onKeyReleased="#table_stafferSetOnKeyReleased" onMouseClicked="#table_stafferMouseClicked" prefHeight="380.0" prefWidth="800.0">
+              <columns>
+                <TableColumn fx:id="col_studNum" editable="false" prefWidth="90.0" resizable="false" sortable="false" style="-fx-alignment: CENTER;" text="Student #" />
+                <TableColumn fx:id="col_stafferName" editable="false" prefWidth="165.0" resizable="false" sortable="false" text="Staffer" />
+                  <TableColumn fx:id="col_pos" editable="false" prefWidth="155.0" resizable="false" sortable="false" style="-fx-alignment: CENTER;" text="Position" />
+                  <TableColumn fx:id="col_program" editable="false" prefWidth="150.0" resizable="false" sortable="false" style="-fx-alignment: CENTER;" text="Program" />
+                  <TableColumn fx:id="col_contact" editable="false" prefWidth="110.0" resizable="false" sortable="false" style="-fx-alignment: CENTER;" text="Contact Number" />
+                  <TableColumn fx:id="col_address" editable="false" prefWidth="140.0" sortable="false" text="Address" />
+              </columns>
+            </TableView>
+            <TextField fx:id="staffer_studnum" layoutX="134.0" layoutY="440.0" prefHeight="25.0" prefWidth="150.0" promptText="Student Number" style="-fx-background-color: transparent; -fx-prompt-text-fill: #d03a3a; -fx-border-width: 0 0 1 0; -fx-border-color: #1A1A1D;" />
+            <TextField fx:id="staffer_pos" layoutX="299.0" layoutY="440.0" prefHeight="25.0" prefWidth="150.0" promptText="Position" style="-fx-background-color: transparent; -fx-prompt-text-fill: #d03a3a; -fx-border-width: 0 0 1 0; -fx-border-color: #1A1A1D;" />
+            <TextField fx:id="staffer_prog" layoutX="464.0" layoutY="440.0" prefHeight="25.0" prefWidth="150.0" promptText="Program" style="-fx-background-color: transparent; -fx-prompt-text-fill: #d03a3a; -fx-border-width: 0 0 1 0; -fx-border-color: #1A1A1D;" />
+            <TextField fx:id="staffer_address" layoutX="629.0" layoutY="440.0" prefHeight="25.0" prefWidth="150.0" promptText="Address" style="-fx-background-color: transparent; -fx-prompt-text-fill: #d03a3a; -fx-border-width: 0 0 1 0; -fx-border-color: #1A1A1D;" />
+            <TextField fx:id="staffer_fname" layoutX="134.0" layoutY="475.0" prefHeight="25.0" prefWidth="150.0" promptText="First Name" style="-fx-background-color: transparent; -fx-prompt-text-fill: #d03a3a; -fx-border-width: 0 0 1 0; -fx-border-color: #1A1A1D;" />
+            <TextField fx:id="staffer_middleinit" layoutX="299.0" layoutY="475.0" prefHeight="25.0" prefWidth="150.0" promptText="Middle Name" style="-fx-background-color: transparent; -fx-prompt-text-fill: #d03a3a; -fx-border-width: 0 0 1 0; -fx-border-color: #1A1A1D;" />
+            <TextField fx:id="staffer_lname" layoutX="464.0" layoutY="475.0" prefHeight="25.0" prefWidth="150.0" promptText="Last Name" style="-fx-background-color: transparent; -fx-prompt-text-fill: #d03a3a; -fx-border-width: 0 0 1 0; -fx-border-color: #1A1A1D;" />
+            <TextField fx:id="staffer_contact" layoutX="629.0" layoutY="475.0" prefHeight="25.0" prefWidth="150.0" promptText="Contact Number" style="-fx-background-color: transparent; -fx-prompt-text-fill: #d03a3a; -fx-border-width: 0 0 1 0; -fx-border-color: #1A1A1D;" />
+            <Button fx:id="staffer_saveBtn" layoutX="10.0" layoutY="475.0" mnemonicParsing="false" onAction="#staffer_saveBtnActionPerformed" prefHeight="25.0" prefWidth="90.0" text="Save" />
+            <Button fx:id="staffer_clear" layoutX="10.0" layoutY="440.0" mnemonicParsing="false" onAction="#staffer_clearBtnActionPerformed" prefHeight="25.0" prefWidth="90.0" text="Clear" />
+            <Button fx:id="staffer_delete" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#staffer_deleteBtnActionPerformed" prefHeight="25.0" prefWidth="90.0" text="Delete" />
+            <Label fx:id="lbl_selected" alignment="CENTER_RIGHT" layoutX="432.0" layoutY="19.0" prefHeight="17.0" prefWidth="377.0" textFill="#f20000" />
+         </children></AnchorPane>
+      <AnchorPane fx:id="pane_side" layoutY="40.0" prefHeight="515.0" prefWidth="215.0" style="-fx-background-color: #1A1A1D;">
+         <children>
+            <Button fx:id="btn_login" contentDisplay="TOP" layoutX="-7.0" layoutY="71.0" mnemonicParsing="false" onAction="#btn_login_setOnAction" prefHeight="65.0" prefWidth="225.0" style="-fx-background-color: transparent;" text="Log in" textFill="WHITE">
+               <font>
+                  <Font name="Roboto" size="13.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="LOCK" size="15" />
+               </graphic>
+            </Button>
+            <Button fx:id="btn_home" contentDisplay="TOP" layoutX="-7.0" layoutY="140.0" mnemonicParsing="false" onAction="#btn_homeMouseClicked" prefHeight="65.0" prefWidth="225.0" style="-fx-background-color: transparent;" text="Home" textFill="WHITE">
+               <font>
+                  <Font name="Roboto" size="13.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="#f8f8f8" glyphName="HOME" size="15" />
+               </graphic>
+            </Button>
+            <Button fx:id="btn_masterlist" contentDisplay="TOP" layoutX="-7.0" layoutY="209.0" mnemonicParsing="false" onAction="#masterlistclicked" prefHeight="65.0" prefWidth="225.0" style="-fx-background-color: transparent;" text="Master List" textFill="WHITE">
+               <font>
+                  <Font name="Roboto" size="13.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="BOOK" size="15" />
+               </graphic>
+            </Button>
+            <Button fx:id="btn_staffer" contentDisplay="TOP" layoutX="-7.0" layoutY="278.0" mnemonicParsing="false" onAction="#stafferclicked" prefHeight="65.0" prefWidth="225.0" style="-fx-background-color: transparent;" text="Staffer" textFill="WHITE">
+               <font>
+                  <Font name="Roboto" size="13.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="#f8f8f8" glyphName="USERS" size="15" />
+               </graphic>
+            </Button>
+            <Button fx:id="btn_addStaffer" contentDisplay="TOP" layoutX="-7.0" layoutY="347.0" mnemonicParsing="false" onAction="#btn_addStafferActionPerformed" prefHeight="65.0" prefWidth="225.0" style="-fx-background-color: transparent;" text="Add Staffer" textFill="WHITE">
+               <font>
+                  <Font name="Roboto" size="13.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="#f8f8f8" glyphName="USER_PLUS" size="15" />
+               </graphic>
+            </Button>
+            <Separator fx:id="separator" layoutY="140.0" orientation="VERTICAL" prefHeight="66.0" prefWidth="6.0" style="-fx-background-color: red;">
+               <effect>
+                  <Shadow color="#f50000" height="68.72" radius="16.68" width="0.0" />
+               </effect></Separator>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="pane_mainLog" layoutX="215.0" layoutY="40.0" prefHeight="515.0" prefWidth="820.0" style="-fx-background-color: F9D423;">
+         <children>
+            <TableView fx:id="logtbl" layoutX="335.0" layoutY="90.0" onMouseClicked="#logtblSetActionClicked" prefHeight="415.0" prefWidth="470.0">
+              <columns>
+                  <TableColumn fx:id="col_studentnumber" editable="false" prefWidth="120.0" resizable="false" sortable="false" style="-fx-alignment: CENTER;" text="Student Number" />
+                  <TableColumn fx:id="col_staffer" editable="false" minWidth="0.0" prefWidth="150.0" sortable="false" text="Staffer" />
+                <TableColumn fx:id="col_login" editable="false" prefWidth="100.0" resizable="false" sortable="false" style="-fx-alignment: CENTER;" text="Login" />
+                  <TableColumn fx:id="col_logout" editable="false" prefWidth="100.0" resizable="false" sortable="false" style="-fx-alignment: CENTER;" text="Logout" />
+              </columns>
+            </TableView>
+            <Label fx:id="lbl_date" alignment="CENTER_RIGHT" contentDisplay="TOP" graphicTextGap="10.0" layoutX="550.0" layoutY="58.0" prefHeight="15.0" prefWidth="255.0" text="Monday, September 30">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbl_time" alignment="CENTER_RIGHT" layoutX="550.0" prefHeight="15.0" prefWidth="255.0" text="00:00:00 AM">
+               <font>
+                  <Font size="45.0" />
+               </font>
+            </Label>
+            <Pane layoutX="78.0" layoutY="104.0">
+               <children>
+                  <FontAwesomeIconView glyphName="CAMERA" layoutX="70.0" layoutY="98.0" size="25" stroke="BLACK" />
+                  <ImageView fx:id="mainLog_dp" fitHeight="234.0" fitWidth="164.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/1814111.png" />
+                     </image>
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                  </ImageView>
+                  <Circle fill="TRANSPARENT" layoutX="82.0" layoutY="90.0" radius="87.0" stroke="#000000fc" strokeType="INSIDE" />
+               </children>
+            </Pane>
+            <TextField fx:id="mainLog_studnum" alignment="CENTER" layoutX="85.0" layoutY="45.0" onKeyReleased="#mainLog_studnumSetActionKeyReleased" prefHeight="30.0" prefWidth="150.0" promptText="Student Number">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </TextField>
+            <Label fx:id="mainLog_name" alignment="CENTER" layoutX="10.0" layoutY="302.0" prefHeight="20.0" prefWidth="300.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="mainLog_prog" alignment="CENTER" layoutX="10.0" layoutY="332.0" prefHeight="20.0" prefWidth="300.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="mainLog_pos" alignment="CENTER" layoutX="10.0" layoutY="362.0" prefHeight="20.0" prefWidth="300.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="btn_timein" layoutX="75.0" layoutY="417.0" mnemonicParsing="false" onAction="#btn_timeinActionPerformed" prefHeight="40.0" prefWidth="80.0" text="Time in" />
+            <Button fx:id="btn_timeout" layoutX="165.0" layoutY="417.0" mnemonicParsing="false" onAction="#btn_timeoutActionPerformed" prefHeight="40.0" prefWidth="80.0" text="Time out" />
+            <HBox fx:id="hBox_msg" alignment="CENTER_LEFT" layoutX="81.0" layoutY="471.0" prefHeight="30.0" prefWidth="180.0">
+               <children>
+                  <Label fx:id="vBox_lbl" prefHeight="17.0" prefWidth="180.0" style="-fx-padding: 0;" text="    " textFill="RED">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Label>
+               </children>
+            </HBox>
+            <Separator blendMode="MULTIPLY" layoutX="320.0" layoutY="10.0" orientation="VERTICAL" prefHeight="495.0" prefWidth="1.0" />
+            <Button fx:id="btn_createlogtable" layoutX="335.0" layoutY="50.0" mnemonicParsing="false" onAction="#btn_createlogtableActionPerformed" prefHeight="25.0" prefWidth="90.0" text="Create Table" />
+            <Button fx:id="btn_deletelogrecord" contentDisplay="CENTER" layoutX="435.0" layoutY="50.0" mnemonicParsing="false" onAction="#btn_deletelogrecordActionPerformed" prefHeight="25.0" prefWidth="60.0" text="Delete" />
+            <TextField fx:id="box_search" layoutX="335.0" layoutY="10.0" prefHeight="25.0" prefWidth="180.0" promptText="Search">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </TextField>
+            <FontAwesomeIconView glyphName="SEARCH" layoutX="340.0" layoutY="26.0" />
+         </children>
+      </AnchorPane>
+    </children>
+</AnchorPane>
